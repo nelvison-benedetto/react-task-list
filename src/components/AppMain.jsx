@@ -74,13 +74,21 @@ export default function AppMain() {
         }
     ];
 
+    const notcompleted = tasks.filter((item, index) => item.state !== "completed");
+
     return (
         <main id="debug">
             <h1>Welcome to my react app</h1>
             <section className="products">
                 <ul>
-                    {products.map((item, index) => <li key={index}>{item}</li>)}  {/*BETTER use id e NOT index as key!!*/}
+                    {/* {notcompleted.map((item, index) => <li key={item.id}>{item.state}</li>)}  BETTER use id e NOT index as key!! */}
+                    {notcompleted.map(item => (
+                        <li key={item.id}>
+                            {item.title} - {item.state}
+                        </li>
+                    ))}
                 </ul>
+                <h2>Current Tasks</h2>
             </section>
         </main>
     );
